@@ -198,9 +198,11 @@ Choose your option: "))
         print("Error please try again")
         
 if player_health == 0:
+    win = 'false'
     print("you died!")
     
-elif player_health > 0:
+elif player_health > 0 and enemy_health == 0:
+    win = 'true'
     print("You won!")
 
 else:
