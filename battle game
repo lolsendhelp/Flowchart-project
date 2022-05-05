@@ -38,6 +38,24 @@ def enemy_heavy_attack_image():
 Enemy        -30      You \n\
 ")
     
+def player_heavy_attack_miss_image():
+    print("\n\
+ 0  ---------------->  0 \n\
+/|\ ----------------> /|\ \n\
+ |                     | \n\
+/ \\                   / \\ \n\
+You    Missed!        Enemy \n\
+")
+    
+def enemy_heavy_attack_miss_image():
+    print("\n\
+ 0  ---------------->  0 \n\
+/|\ ----------------> /|\ \n\
+ |                     | \n\
+/ \\                   / \\ \n\
+Enemy    Missed!      You \n\
+")
+    
 player_health = 100
 player_attack = 10
 player_heavy_attack = 20
@@ -84,29 +102,54 @@ Choose your option: "))
             os.system('cls')
             
         elif player_attack_choice == 2:
-            player_heavy_attack_image()
-            time.sleep(3)
-            os.system('cls')
-            enemy_health = enemy_health - player_heavy_attack
-            print("You heavy attack and did 20 damage!")
-            print("The enemy's health is:", enemy_health, "\n\
-            ")
-            time.sleep(3)
-            os.system('cls')
+            player_heavy_attack_decider = [1,2,3]
+            player_heavy_attack_hit_miss = random.choice(player_heavy_attack_decider)
+            
+            if player_heavy_attack_hit_miss == 1 or 2:
+                player_heavy_attack_image()
+                time.sleep(3)
+                os.system('cls')
+                enemy_health = enemy_health - player_heavy_attack
+                print("You heavy attack and did 20 damage!")
+                print("The enemy's health is:", enemy_health, "\n\
+                ")
+                time.sleep(3)
+                os.system('cls')
+                
+            elif player_heavy_attack_hit_miss == 3:
+                player_heavy_attack_miss_image()
+                time.sleep(3)
+                os.system('cls')
+                print("Your heavy attack missed!")
+                time.sleep(3)
+                os.system('cls')
         
         else:
             print("Please type in a valid answer")
         
     elif attack == 2:
-        enemy_heavy_attack_image()
-        time.sleep(3)
-        os.system('cls')
-        player_health = player_health - enemy_heavy_attack
-        print("They heavy attack and did 15 damage!")
-        print("Your health is:", player_health, "\n\
-        ")
-        time.sleep(3)
-        os.system('cls')
+        enemy_heavy_attack_decider = [1,2,3]
+        enemy_heavy_attack_hit_miss = random.choice(player_heavy_attack_decider)
+            
+        if enemy_heavy_attack_hit_miss == 1 or 2:
+            enemy_heavy_attack_image()
+            time.sleep(3)
+            os.system('cls')
+            player_health = player_health - enemy_heavy_attack
+            print("You heavy attack and did 20 damage!")
+            print("The enemy's health is:", enemy_health, "\n\
+            ")
+            time.sleep(3)
+            os.system('cls')
+                
+        elif enemy_heavy_attack_hit_miss == 3:
+            player_heavy_attack_miss_image()
+            time.sleep(3)
+            os.system('cls')
+            print("Your heavy attack missed!")
+            time.sleep(3)
+            os.system('cls')
+        
         
         player_attack_choice = int(input("What attack do you want to use? \n\
 1. Light attack \n\
@@ -126,15 +169,27 @@ Choose your option: "))
             os.system('cls')
             
         elif player_attack_choice == 2:
-            player_heavy_attack_image()
-            time.sleep(3)
-            os.system('cls')
-            enemy_health = enemy_health - player_heavy_attack
-            print("You heavy attack")
-            print("The enemy's health is:", enemy_health, "\n\
-            ")
-            time.sleep(3)
-            os.system('cls')
+            player_heavy_attack_decider = [1,2,3]
+            player_heavy_attack_hit_miss = random.choice(player_heavy_attack_decider)
+            
+            if player_heavy_attack_hit_miss == 1 or 2:
+                player_heavy_attack_image()
+                time.sleep(3)
+                os.system('cls')
+                enemy_health = enemy_health - player_heavy_attack
+                print("You heavy attack and did 20 damage!")
+                print("The enemy's health is:", enemy_health, "\n\
+                ")
+                time.sleep(3)
+                os.system('cls')
+                
+            elif player_heavy_attack_hit_miss == 3:
+                player_heavy_attack_miss_image()
+                time.sleep(3)
+                os.system('cls')
+                print("Your heavy attack missed!")
+                time.sleep(3)
+                os.system('cls')
         
         else:
             print("Please type in a valid answer")
@@ -149,4 +204,4 @@ elif player_health > 0:
     print("You won!")
 
 else:
-    print("ok ")         
+    print("ok ")          
