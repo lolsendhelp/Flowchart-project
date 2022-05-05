@@ -2,7 +2,8 @@ import random
 import time
 import os
 
-def battle_game():
+#This is the mini-game that will be played
+def battle_game(health):
     def player_light_attack_image():
         print("\n\
  0                     0 \n\
@@ -61,7 +62,7 @@ Enemy    Missed!      You \n\
     player_attack = 10
     player_heavy_attack = 20
 
-    enemy_health = 50
+    enemy_health = health
     enemy_attack = 15
     enemy_heavy_attack = 30
 
@@ -86,9 +87,10 @@ Enemy    Missed!      You \n\
             os.system('cls')
             
             player_attack_choice = int(input("What attack do you want to use? \n\
-    1. Light attack \n\
-    2. Heavy attack \n\
-    Choose your option: "))
+1. Light attack \n\
+2. Heavy attack \n\
+3. Heal \n\
+Choose your option: "))
             
             
             if player_attack_choice == 1:
@@ -155,6 +157,22 @@ Enemy    Missed!      You \n\
                         print("You won!")
                         break
             
+            elif player_attack_choice == 3:
+                player_health = player_health + 20
+                print("You healed. \n\
+Your health now is:", player_health ,"\n\
+The enemy's health is:", enemy_health)
+                
+                if player_health <= 0:
+                        win = 'false'
+                        print("you died!")
+                        break
+        
+                elif player_health > 0 and enemy_health <= 0:
+                    win = 'true'
+                    print("You won!")
+                    break
+            
             else:
                 print("Please type in a valid answer")
             
@@ -167,8 +185,8 @@ Enemy    Missed!      You \n\
                 time.sleep(3)
                 os.system('cls')
                 player_health = player_health - enemy_heavy_attack
-                print("You heavy attack and did 20 damage!")
-                print("The enemy's health is:", enemy_health, "\n\
+                print("They heavy attack and did 20 damage!")
+                print("Your health is now:", player_health, "\n\
                 ")
                 time.sleep(3)
                 os.system('cls')
@@ -184,10 +202,10 @@ Enemy    Missed!      You \n\
                     break 
                     
             elif enemy_heavy_attack_hit_miss == 3:
-                player_heavy_attack_miss_image()
+                enemy_heavy_attack_miss_image()
                 time.sleep(3)
                 os.system('cls')
-                print("Your heavy attack missed!")
+                print("Their heavy attack missed!")
                 time.sleep(3)
                 os.system('cls')
                 
@@ -202,9 +220,10 @@ Enemy    Missed!      You \n\
                     break
             
             player_attack_choice = int(input("What attack do you want to use? \n\
-    1. Light attack \n\
-    2. Heavy attack \n\
-    Choose your option: "))
+1. Light attack \n\
+2. Heavy attack \n\
+3. Heal \n\
+Choose your option: "))
             print(" ")
             
             if player_attack_choice == 1:
@@ -265,12 +284,30 @@ Enemy    Missed!      You \n\
                     if player_health <= 0:
                         win = 'false'
                         print("you died!")
+                        time.sleep(3)
                         break
         
                     elif player_health > 0 and enemy_health <= 0:
                         win = 'true'
                         print("You won!")
+                        time.sleep(3)
                         break 
+                    
+            elif player_attack_choice == 3:
+                player_health = player_health + 20
+                print("You healed. \n\
+Your health now is:", player_health ,"\n\
+The enemy's health is:", enemy_health)
+                
+                if player_health <= 0:
+                        win = 'false'
+                        print("you died!")
+                        break
+        
+                elif player_health > 0 and enemy_health <= 0:
+                    win = 'true'
+                    print("You won!")
+                    break
             
             else:
                 print("Please type in a valid answer")
@@ -279,11 +316,114 @@ Enemy    Missed!      You \n\
             print("Error please try again")
             
     if win == 'true':
-        print("Good job!")
         wins = 1
+        return wins 
         
     elif win == 'false':
-        print("Bad Job!")
         wins = 0
+        return wins 
         
-battle_game()
+#Start of the main part of code
+
+print("You are a barbarian commander in the year 87 A.D. \n\
+It is a grey, rainy and bleak day. You hear word of your \n\
+sworn enemies the Roman Empire preparing for an attack \n\
+just outside your encampment. You rally your men for the \n\
+attack. You and your men fight for what feels like days. \n\
+Unfortunately your men all are either killed or run away. \n\
+You stand your ground but are captured. \n\
+")
+
+life_path = int(input("You are given a choice \n\
+1. Become a Roman soldier \n\
+2. Become a Gladiator \n\
+3. Become a Slave \n\
+What is your choice?: "))
+
+if life_path == 1:
+    print("Ok")
+    
+elif life_path == 2:
+    print("You become a lowly gladiator and are offered \n\
+a safe passage home only if you kill 3 gladiators. \n\
+\n\
+It has been a year since you have been forced into being \n\
+a gladiator. You have been vigorously training. Dreaming \n\
+of the day you get back home. You see flashes of your home \n\
+now and again but never enough to truly feel like you are \n\
+there. Your first fight begins in just a few minutes. \n\
+You feel ready. \n\
+You walk into the arena the stands roaring. Your enemy \n\
+stands in front of you also ready. \n\
+")
+time.sleep(10)
+    
+wins = battle_game(50)
+    
+if wins == 1:
+    print("The stands gasp for a moment followed by a short silence. \n\
+They seem confused. It's as if they believed with every bit of \n\
+their being that you were going to lose. The silence ends and \n\
+the arena erupts. They demand you fight another one. \n\
+You oblige. You have been preparing for this moment for a year. \n\
+Another oponent enters in from the gates. You ready yourself. \n\
+")
+    time.sleep(5)
+    wins = battle_game(60)
+    
+    if wins == 1:
+        print("Contrary to the last fight the stands erupt. \n\
+Some call for you to lose and die, some cheer you on. \n\
+You feel closer to your home every win. The last gladiator \n\
+comes running out of the gate sword in hand. You feel more \n\
+ready than you ever have.\n\
+")
+        time.sleep(5)
+        wins = battle_game(75)
+        
+        if wins == 1:
+            print("You did it! Your feel your freedom. \n\
+But something feels wrong. The crowd is roaring. However, \n\
+The emperor sits still and quiet. He challenges you to a battle. \n\
+You will be given your freedom and bags of gold. The catch is \n\
+you must best the emperor of the Roman Empire in battle. \n\
+You feel nervous but you accept the challenge. \n\
+")
+            time.sleep(5)
+            wins = battle_game(85)
+            
+            if wins == 1:
+                print("The crowd erupts into a mixture \n\
+of laughter and screams. But you can't hear them. \n\
+The only thing you can think of is home. You fall to your knees \n\
+in exhaustion.")
+                time.sleep(5)
+                
+                leave_or_fight = int(input("The emperor rises he calmly \n\
+approaches you. He states that he has never seen a fighter with such expertise \n\
+He offers you a choice \n\
+1. Stay and remain a gladiator \n\
+2. Leave with your riches and return home \n\
+What is your choice?: "))
+
+                if leave_or_fight == 1:
+                    print("The emperor laughs so hard he is forced to hold \n\
+his stomach in laughter. You look confused as he continues to laugh. \n\
+\"You fool!\" he yells. \"Send in Commodus\" he says while laughing. \n\
+The stands erupt in laughter. Commodus runs out he is larger. \n\
+Than all the other gladiators. \n\
+")
+                    time.sleep(5)
+                    wins = battle_game(100)
+                    
+                    if wins == 1:
+                        print("")
+                
+                elif leave_or_fight == 2:
+                    print("The emperor looks slightly dissapointed. \n\
+But you do not care he obliges and hands you the bags of gold as promised. \n\
+You start the journey home. You travel for 3 weeks but you eventually get there. \n\
+You are greeted with applause as you enter your town. You made it. It's all over.")
+                    time.sleep(5)
+                    print("The end.")
+    
