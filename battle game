@@ -1,5 +1,23 @@
 import random
+import time
 
+def player_light_attack_image():
+    print("\n\
+ 0                     0 \n\
+/|\ ----------------> /|\ \n\
+ |                     | \n\
+/ \\                  / \\ \n\
+You        -10        Enemy")
+    
+def player_heavy_attack_image():
+    print("ok")
+    
+def enemy_light_attack_image():
+    print("ok")
+    
+def enemy_heavy_attack_image():
+    print("ok")
+    
 player_health = 100
 player_attack = 10
 player_heavy_attack = 20
@@ -10,36 +28,39 @@ enemy_heavy_attack = 30
 
 decider = [1,2]
 
+
 print("You have encountered an enemy")
 
 while 0 < player_health <= 100 or 0 < enemy_health <= 50:
-    print("they attack \n\
-    ")
     attack = random.choice(decider)
-    
     
     if attack == 1:
         player_health = player_health - enemy_attack
         print("They light attack")
         print("Your health is:", player_health, "\n\
         ")
+        time.sleep(3)
         
         player_attack_choice = int(input("What attack do you want to use? \n\
 1. Light attack \n\
 2. Heavy attack \n\
 Choose your option: "))
         
+        
         if player_attack_choice == 1:
             enemy_health = enemy_health - player_attack
             print("You light attack")
             print("The enemy's health is:", enemy_health, "\n\
             ")
+            player_light_attack_image()
+            time.sleep(3)
             
         elif player_attack_choice == 2:
             enemy_health = enemy_health - player_heavy_attack
             print("You heavy attack")
             print("The enemy's health is:", enemy_health, "\n\
             ")
+            time.sleep(3)
         
         else:
             print("Please type in a valid answer")
@@ -49,6 +70,7 @@ Choose your option: "))
         print("They heavy attack")
         print("Your health is:", player_health, "\n\
         ")
+        time.sleep(3)
         
         player_attack_choice = int(input("What attack do you want to use? \n\
 1. Light attack \n\
@@ -61,12 +83,14 @@ Choose your option: "))
             print("You light attack")
             print("The enemy's health is:", enemy_health, "\n\
             ")
+            time.sleep(3)
             
         elif player_attack_choice == 2:
             enemy_health = enemy_health - player_heavy_attack
             print("You heavy attack")
             print("The enemy's health is:", enemy_health, "\n\
             ")
+            time.sleep(3)
         
         else:
             print("Please type in a valid answer")
@@ -81,4 +105,4 @@ elif player_health > 0:
     print("You still suck but less")
 
 else:
-    print("ok ")       
+    print("ok ")        
