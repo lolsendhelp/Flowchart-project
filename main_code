@@ -115,10 +115,9 @@ Choose your option: "))
                     break 
                 
             elif player_attack_choice == 2:
-                player_heavy_attack_decider = [1,2,3]
-                player_heavy_attack_hit_miss = random.choice(player_heavy_attack_decider)
+                #percentage_chance = float(0.333)
                 
-                if player_heavy_attack_hit_miss == 1 or 2:
+                if random.random() > 0.333:
                     player_heavy_attack_image()
                     time.sleep(3)
                     os.system('cls')
@@ -139,7 +138,7 @@ Choose your option: "))
                         print("You won!")
                         break 
                     
-                elif player_heavy_attack_hit_miss == 3:
+                elif random.random() < 0.333:
                     player_heavy_attack_miss_image()
                     time.sleep(3)
                     os.system('cls')
@@ -177,10 +176,9 @@ The enemy's health is:", enemy_health)
                 print("Please type in a valid answer")
             
         elif attack == 2:
-            enemy_heavy_attack_decider = [1,2,3]
-            enemy_heavy_attack_hit_miss = random.choice(enemy_heavy_attack_decider)
+            #percentage_chance = float(0.333)
                 
-            if enemy_heavy_attack_hit_miss == 1 or 2:
+            if random.random() > 0.333:
                 enemy_heavy_attack_image()
                 time.sleep(3)
                 os.system('cls')
@@ -201,7 +199,7 @@ The enemy's health is:", enemy_health)
                     print("You won!")
                     break 
                     
-            elif enemy_heavy_attack_hit_miss == 3:
+            elif random.random() < 0.333:
                 enemy_heavy_attack_miss_image()
                 time.sleep(3)
                 os.system('cls')
@@ -249,10 +247,9 @@ Choose your option: "))
     
                 
             elif player_attack_choice == 2:
-                player_heavy_attack_decider = [1,2,3]
-                player_heavy_attack_hit_miss = random.choice(player_heavy_attack_decider)
+                #percentage_chance = float(0.333)
                 
-                if player_heavy_attack_hit_miss == 1 or 2:
+                if random.random() > 0.333:
                     player_heavy_attack_image()
                     time.sleep(3)
                     os.system('cls')
@@ -273,7 +270,7 @@ Choose your option: "))
                         print("You won!")
                         break 
                     
-                elif player_heavy_attack_hit_miss == 3:
+                elif random.random() < 0.333:
                     player_heavy_attack_miss_image()
                     time.sleep(3)
                     os.system('cls')
@@ -322,6 +319,9 @@ The enemy's health is:", enemy_health)
     elif win == 'false':
         wins = 0
         return wins 
+    
+wins = battle_game(50)
+print(wins) 
         
 #Start of the main part of code
 print("You are a barbarian commander in the year 87 A.D. \n\
@@ -343,7 +343,55 @@ What is your choice?: "))
 
 #First story line Roman soldier
 if life_path == 1:
-    print("Ok")
+    print("You are inducted into the Roman Legion that attacked \n\
+Your encampment. Everyone treats you as if you were lowly filth. \n\
+\n\
+1 Year later\n\
+It has been a full year since you were forced into being a \n\
+Roman soldier. The attitude of the other soldiers regarding \n\
+you has remained the same. Suddenly you hear a loud bang \n\
+and then the screams of men. You are being attacked. \n\
+But by who? As you move to the front line you realize \n\
+it is your own men. The men who retreated have regrouped \n\
+and counter-attacked.\n\
+")
+    time.sleep(6.5)
+    
+    #Gives you the choice to either fight against the people you used to fight with or fight with them and run away
+    fight_against_barbarians = input("Do you fight against your own people? (y/n): ")
+    fight_against_barbarians = fight_against_barbarians.lower()
+    
+    #Bad ending
+    #Opens the fight against barbarians branch of the legionnaire story line
+    if fight_against_barbarians == 'y':
+        print(" ok")
+        
+    #Good ending 
+    #Opens the fight with barbarians branch of the legionnaire story line 
+    elif fight_against_barbarians == 'n':
+        print("Your fellow legionnaires realize you have betrayed them. \n\
+You must fight them")
+        time.sleep(3)
+        wins = battle_game(50)
+        
+        #If you choose to fight with the barbarians and win against the legionnaires
+        if wins == 1:
+            print("You win the battle and run away with your fellow barbarians. \n\
+You reach a place far enough from the legion. You give them all the details on \n\
+how you were treated, how the army operated and much more.\n\
+")          
+            #Makes you decide if you want to counter attack or run away in fear
+            fight_or_run = int(input("You must make a decision \n\
+1. We must counter-attack we can not let this stand \n\
+2. We must run away they are too advanced \n\
+Choose an option: "))
+            
+            #If you choose the counter attack option 
+            if fight_or_run == 1:
+                print("You decide you must counter-attack the legion. \n\
+You must regain your honor after being captured and subjugated to suffering \n\
+and grunt work. \n\
+")
     
 #Secondary story line Gladiator
 elif life_path == 2:
