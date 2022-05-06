@@ -501,6 +501,8 @@ stands in front of you also ready. \n\
     Visions of your homeland return to you. You feel like you are there \n\
     in your last moments. \n\
     The end.")
+                        else:
+                            print("Please enter a valid answer")
                     
                     #If you choose not to remain a gladiator 
                     #You are allowed to go home 
@@ -512,6 +514,9 @@ stands in front of you also ready. \n\
     You are greeted with applause as you enter your town. You made it. It's all over.")
                         time.sleep(5)
                         print("The end.")
+                    
+                    else:
+                        print("Please enter a valid answer")
 
                 #If you lose the boss fight against the roman emperor
                 #You must fight another gladiator since the emperor and civilians enjoy the fights you participate in
@@ -542,7 +547,11 @@ stands in front of you also ready. \n\
     You were so close to home. You were so close to freedom. So \n\
     close yet so far away. \n\
     The end. ")
-        
+                    else:
+                        print("Please enter a valid answer")
+                        
+                else:
+                    print("Please enter a valid answer")
         #You lose against the second gladiator 
         #Starts the assasinate the emperor subplot of the gladiator story line
         elif wins == 0:
@@ -593,6 +602,8 @@ The end.")
 After the emperor's death the roman empire collapses. \n\
 The end.")                        
                         time.sleep(5)
+                    else:
+                        print("Please enter a valid answer")
                 
                 #If you choose you do not want to assasinate the emperor
                 elif assasinate == 'n':
@@ -622,7 +633,12 @@ The end.")
 After the emperor's death the roman empire collapses. \n\
 The end.")
                         time.sleep(5)
-                    
+                    else:
+                        print("Please enter a valid answer")
+                
+                else:
+                    print("Please enter a valid answer")
+                
             #If you lose against the emperor after losing against the second gladiator
             #End of the lose to the second gladiator branch of the Gladiator story line 
             elif wins == 0:
@@ -633,12 +649,18 @@ You are battered and defeated but you make it home. \n\
 You are accepted with open arms. \n\
 The end.")
                 time.sleep(5)
+            
+            else:
+                print("Please enter a valid answer")
         
         elif wins == 0:
             print("You lose and are mocked. You are kept as a slave \n\
 for the remainder of your sad, depressing days. You are never able to \n\
 make it home. \n\
 The end.")
+        
+        else:
+            print("Please enter a valid answer")
             
     #You lose against the first gladiator and die alone
     #End of the first gladiator fight branch of the gladiator story line
@@ -646,3 +668,15 @@ The end.")
         print("You die sad and alone. \n\
 You didn't even make it close to freedom. \n\
 The end.")
+    
+    else:
+        print("Please enter a valid answer")
+        
+elif life_path == 2:
+    print("You become a slave to the roman legionnaires")
+    
+elif life_path == 3:
+    print("You become a prisoner of war and you must escape no matter the cost")
+    
+else:
+    print("Please enter a valid answer")
