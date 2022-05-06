@@ -324,7 +324,6 @@ The enemy's health is:", enemy_health)
         return wins 
         
 #Start of the main part of code
-
 print("You are a barbarian commander in the year 87 A.D. \n\
 It is a grey, rainy and bleak day. You hear word of your \n\
 sworn enemies the Roman Empire preparing for an attack \n\
@@ -334,15 +333,19 @@ Unfortunately your men all are either killed or run away. \n\
 You stand your ground but are captured. \n\
 ")
 
-life_path = int(input("You are given a choice \n\
+#First life path lets you choose what you want to do.
+life_path = int(input("You are given a choice by the emperor \n\
 1. Become a Roman soldier \n\
 2. Become a Gladiator \n\
 3. Become a Slave \n\
+4. Become a Prisoner \n\
 What is your choice?: "))
 
+#First story line Roman soldier
 if life_path == 1:
     print("Ok")
     
+#Secondary story line Gladiator
 elif life_path == 2:
     print("You become a lowly gladiator and are offered \n\
 a safe passage home only if you kill 3 gladiators. \n\
@@ -356,74 +359,242 @@ You feel ready. \n\
 You walk into the arena the stands roaring. Your enemy \n\
 stands in front of you also ready. \n\
 ")
-time.sleep(10)
-    
-wins = battle_game(50)
-    
-if wins == 1:
-    print("The stands gasp for a moment followed by a short silence. \n\
-They seem confused. It's as if they believed with every bit of \n\
-their being that you were going to lose. The silence ends and \n\
-the arena erupts. They demand you fight another one. \n\
-You oblige. You have been preparing for this moment for a year. \n\
-Another oponent enters in from the gates. You ready yourself. \n\
-")
-    time.sleep(5)
-    wins = battle_game(60)
-    
-    if wins == 1:
-        print("Contrary to the last fight the stands erupt. \n\
-Some call for you to lose and die, some cheer you on. \n\
-You feel closer to your home every win. The last gladiator \n\
-comes running out of the gate sword in hand. You feel more \n\
-ready than you ever have.\n\
-")
-        time.sleep(5)
-        wins = battle_game(75)
+    time.sleep(10)  
+
+    #First gladiator fight
+    wins = battle_game(50)
         
+
+    #This condition only works if you beat the first gladiator
+    if wins == 1:
+        print("The stands gasp for a moment followed by a short silence. \n\
+    They seem confused. It's as if they believed with every bit of \n\
+    their being that you were going to lose. The silence ends and \n\
+    the arena erupts. They demand you fight another one. \n\
+    You oblige. You have been preparing for this moment for a year. \n\
+    Another oponent enters in from the gates. You ready yourself. \n\
+    ")
+        time.sleep(5)
+        
+        #The second gladiator fight
+        wins = battle_game(60)
+        
+        #This condition only works if you beat the second gladiator
         if wins == 1:
-            print("You did it! Your feel your freedom. \n\
-But something feels wrong. The crowd is roaring. However, \n\
-The emperor sits still and quiet. He challenges you to a battle. \n\
-You will be given your freedom and bags of gold. The catch is \n\
-you must best the emperor of the Roman Empire in battle. \n\
-You feel nervous but you accept the challenge. \n\
-")
+            print("Contrary to the last fight the stands erupt. \n\
+    Some call for you to lose and die, some cheer you on. \n\
+    You feel closer to your home every win. The last gladiator \n\
+    comes running out of the gate sword in hand. You feel more \n\
+    ready than you ever have.\n\
+    ")
             time.sleep(5)
-            wins = battle_game(85)
             
+            #The third gladiator fight
+            wins = battle_game(75)
+        
+            #This condition only works if you beat the third gladiator
+            #This is the gladiator you believe is the last
             if wins == 1:
-                print("The crowd erupts into a mixture \n\
-of laughter and screams. But you can't hear them. \n\
-The only thing you can think of is home. You fall to your knees \n\
-in exhaustion.")
+                print("You did it! Your feel your freedom. \n\
+    But something feels wrong. The crowd is roaring. However, \n\
+    The emperor sits still and quiet. He challenges you to a battle. \n\
+    You will be given your freedom and bags of gold. The catch is \n\
+    you must best the emperor of the Roman Empire in battle. \n\
+    You feel nervous but you accept the challenge. \n\
+    ")
                 time.sleep(5)
                 
-                leave_or_fight = int(input("The emperor rises he calmly \n\
-approaches you. He states that he has never seen a fighter with such expertise \n\
-He offers you a choice \n\
-1. Stay and remain a gladiator \n\
-2. Leave with your riches and return home \n\
-What is your choice?: "))
+                #This is the boss fight against the Roman Empire
+                wins = battle_game(85)
+                
+                #This condition only happens when you beat the apparent last gladiator
+                if wins == 1:
+                    print("The crowd erupts into a mixture \n\
+    of laughter and screams. But you can't hear them. \n\
+    The only thing you can think of is home. You fall to your knees \n\
+    in exhaustion.")
+                    time.sleep(5)
+                    
+                    #Emperor enjoys your fights and asks if you want to go home or keep fighting
+                    leave_or_fight = int(input("The emperor rises he calmly \n\
+    approaches you. He states that he has never seen a fighter with such expertise \n\
+    He offers you a choice \n\
+    1. Stay and remain a gladiator \n\
+    2. Leave with your riches and return home \n\
+    What is your choice?: "))
+                    
+                    #If you choose you want to remain a gladiator this occurs
+                    if leave_or_fight == 1:
+                        print("The emperor laughs so hard he is forced to hold \n\
+    his stomach in laughter. You look confused as he continues to laugh. \n\
+    \"You fool!\" he yells. \"Send in Commodus\" he says while laughing. \n\
+    The stands erupt in laughter. Commodus runs out he is larger. \n\
+    Than all the other gladiators. \n\
+    ")
+                        time.sleep(5)
+                        
+                        #Extra hard boss fight if you choose to remain a gladiator
+                        wins = battle_game(100)
+                        
+                        #If you beat the extra hard boss fight when you remain a gladiator
+                        #End of the remain gladiator branch of the gladiator story line
+                        if wins == 1:
+                            print("You have surprised yourself that you won. \n\
+    You decide to spend the rest of your days as a professional \n\
+    gladiator. The citizens love you. You become the biggest star \n\
+    of the Colosseum. \n\
+    The end.")
+                            time.sleep(5)
+                            
+                        #If you lose against the extra hard boss fight 
+                        #This is the end of the remain gladiator brach of the gladiator story line
+                        elif wins == 0:
+                            print("You are killed and are unable to go home. \n\
+    Visions of your homeland return to you. You feel like you are there \n\
+    in your last moments. \n\
+    The end.")
+                    
+                    #If you choose not to remain a gladiator 
+                    #You are allowed to go home 
+                    #End of the do not remain gladiator and go home branch of the gladiator story line
+                    elif leave_or_fight == 2:
+                        print("The emperor looks slightly dissapointed. \n\
+    But you do not care he obliges and hands you the bags of gold as promised. \n\
+    You start the journey home. You travel for 3 weeks but you eventually get there. \n\
+    You are greeted with applause as you enter your town. You made it. It's all over.")
+                        time.sleep(5)
+                        print("The end.")
 
-                if leave_or_fight == 1:
-                    print("The emperor laughs so hard he is forced to hold \n\
-his stomach in laughter. You look confused as he continues to laugh. \n\
-\"You fool!\" he yells. \"Send in Commodus\" he says while laughing. \n\
-The stands erupt in laughter. Commodus runs out he is larger. \n\
-Than all the other gladiators. \n\
+                #If you lose the boss fight against the roman emperor
+                #You must fight another gladiator since the emperor and civilians enjoy the fights you participate in
+                elif wins == 0:
+                    print("The emperor applauds your expertise and takes pity upon you. \n\
+    He compliments you on your showmanship and promises you freedom \n\
+    If you win one more fight.")
+                    
+                    time.sleep(5)
+                    
+                    #Fight against the very last gladiator if you lose against the roman emperor
+                    wins = battle_game(60)
+                    
+                    #If you beat the gladiator after losing to the emperor 
+                    #End of the lose to the emperor branch of the gladiator story line
+                    if wins == 1:
+                        print("The crows roars with excitement. \n\
+    but you cannot hear them. For the only thing you can think of is home. \n\
+    You are allowed safe passage to go home. You are greeted by your village. \n\
+    You have never felt better. \n\
+    The end. ")
+                        time.sleep(5)
+                    
+                    #If you lose to the gladiator after losing to the emperor 
+                    #End of the lose to the emperor branch of the gladiator story line  
+                    elif wins == 0:
+                        print("The crowd boos at your defeat. \n\
+    You were so close to home. You were so close to freedom. So \n\
+    close yet so far away. \n\
+    The end. ")
+        
+        #You lose against the second gladiator 
+        #Starts the assasinate the emperor subplot of the gladiator story line
+        elif wins == 0:
+            print("You are frustrated as you didn't even get close to halfway. \n\
+You are sent back to the gladatorial school that you used to train in. \n\
+You train vigorously for a year. Always imagining how your homecoming would be like. \n\
+What you would eat when you got home. What you would do. \n\
+After a year of training you are sent back into the arena. \n\
+You see the emperor fighting multiple gladiators at once. \n\
+He makes eye contact with you and challenges you. \n\
+")
+            time.sleep(5)
+            #Fight with the emperor 
+            wins = battle_game(110)
+            
+            #If you win against the emperor start of the assasinate branch story line
+            if wins == 1:
+                print("The emperor is impressed. He demands you become \n\
+a personal bodyguard of his. You accept as you don't actually have a choice. \n\
+")              
+                #Asks if you want to assasinate the emperor or not 
+                assasinate = (input("A group of senators approach you in your barracks. \n\
+They are opponents to the emperor and believe he has grown too egotistical and \n\
+puts the entire empire at risk. You are offered a choice. They want you to assasinate him. \n\
+Do you assasinate him? (y/n): "))
+                assasinate = assasinate.lower()
+                
+                #This condition only works if you choose you DO want to kill the emperor 
+                if assasinate == 'y':
+                    print("You creep into his bedroom at night with a sword. \n\
+Unfortunately he hears you walk up to him and wakes up. You have no choice \n\
+but to fight him.")
+                    time.sleep(5)
+                    #Fight against the emperor after you try to assasinate him
+                    wins = battle_game(90)
+                    
+                    #If you successfully assasinate the emperor 
+                    #End of the assasinate branch of the Gladiator story line 
+                    if wins == 1:
+                        print("You report back to the senators that the emperor is dead. \n\
+they are satisfied and allow you safe passage back home. You've done it. After more than a year \n\
+of being captured and held and forced to fight against your will you have survived. \n\
+You make the journey home and arrive after 3 weeks of walking. It's all over. Finally. \n\
+The end.")          
+                    #If you lose against the emperor when you try and assasinate him
+                    elif wins == 0:
+                        print("You die alone and quietly dreaming of your home. \n\
+After the emperor's death the roman empire collapses. \n\
+The end.")                        
+                        time.sleep(5)
+                
+                #If you choose you do not want to assasinate the emperor
+                elif assasinate == 'n':
+                    print("The senators are visibly dissatisfied with your \n\
+refusal. But do not verbally say it. In the night an assasin shows up. \n\
+he is here to kill the emperor and you. You must fight them or you will never go home. \n\
 ")
                     time.sleep(5)
-                    wins = battle_game(100)
                     
+                    #Fight against the assasin that is trying to kill you and the emperor 
+                    wins = battle_game(75)
+                    
+                    #If you kill the assasin trying to kill the emperor 
+                    #End of the assasin branch of the Gladiator story line
                     if wins == 1:
-                        print("")
-                
-                elif leave_or_fight == 2:
-                    print("The emperor looks slightly dissapointed. \n\
-But you do not care he obliges and hands you the bags of gold as promised. \n\
-You start the journey home. You travel for 3 weeks but you eventually get there. \n\
-You are greeted with applause as you enter your town. You made it. It's all over.")
-                    time.sleep(5)
-                    print("The end.")
-    
+                        print("The emperor is impressed with your abilities and \n\
+allows you to go home. You thank him and go on your way. You've done it. After more than a year \n\
+of being captured and held and forced to fight against your will you have survived. \n\
+You make the journey home and arrive after 3 weeks of walking. It's all over. Finally. \n\
+The end.")
+                        time.sleep(5)
+
+                    #If you lose against the assasin trying to kill you and the emperor
+                    #End of the assasin branch of the Gladiator story line
+                    elif wins == 0:
+                        print("You die alone and quietly dreaming of your home. \n\
+After the emperor's death the roman empire collapses. \n\
+The end.")
+                        time.sleep(5)
+                    
+            #If you lose against the emperor after losing against the second gladiator
+            #End of the lose to the second gladiator branch of the Gladiator story line 
+            elif wins == 0:
+                print("The emperor sees you on the ground defeated. \n\
+He takes pity on you and releases you. You are free to go home. \n\
+You run out of the arena and make the long journey home. \n\
+You are battered and defeated but you make it home. \n\
+You are accepted with open arms. \n\
+The end.")
+                time.sleep(5)
+        
+        elif wins == 0:
+            print("You lose and are mocked. You are kept as a slave \n\
+for the remainder of your sad, depressing days. You are never able to \n\
+make it home. \n\
+The end.")
+            
+    #You lose against the first gladiator and die alone
+    #End of the first gladiator fight branch of the gladiator story line
+    elif wins == 0:
+        print("You die sad and alone. \n\
+You didn't even make it close to freedom. \n\
+The end.")
