@@ -391,8 +391,22 @@ Choose an option: "))
                 print("You decide you must counter-attack the legion. \n\
 You must regain your honor after being captured and subjugated to suffering \n\
 and grunt work. \n\
-")
+")      
+        #Ending after losing to first legionnaire
+        elif wins == 1:
+            print("You die an honorable death beside your men. \n\
+You may not have made it home but at least you died in battle beside \n\
+your brothers in arms. \n\
+The end.")
+            time.sleep(5)
+            
+        else:
+            print("Please enter a valid answer")
+    else:
+            print("Please enter a valid answer")
     
+            
+            
 #Secondary story line Gladiator
 elif life_path == 2:
     print("You become a lowly gladiator and are offered \n\
