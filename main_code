@@ -318,10 +318,7 @@ The enemy's health is:", enemy_health)
         
     elif win == 'false':
         wins = 0
-        return wins 
-    
-wins = battle_game(50)
-print(wins) 
+        return wins  
         
 #Start of the main part of code
 print("You are a barbarian commander in the year 87 A.D. \n\
