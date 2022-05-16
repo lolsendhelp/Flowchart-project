@@ -361,7 +361,58 @@ and counter-attacked.\n\
     #Bad ending
     #Opens the fight against barbarians branch of the legionnaire story line
     if fight_against_barbarians == 'y':
-        print(" ok")
+        print("The legionnaires you are fighting with have realized \n\
+You have betrayed your people. They gain morale because of this and are \n\
+able to win the battle because of this. After the battle you are applauded\n\
+and celebrated. \n\
+")
+        time.sleep(4)
+        continue_fighting = input("Do you continue fighting your own people? (y/n): ")
+        continue_fighting = continue_fighting.lower()
+        
+        if continue_fighting == 'y':
+            print("Your fellow legionnaires decide to ambush a nearby encampment. \n\
+You are enlisted to go with them. Your legion attacks the encampment and you must fight.")
+            
+            time.sleep(3)
+            wins = battle_game(45)
+            
+            if wins == 1:
+                print("After the dust settles you come to a horrible realization. \n\
+You knew some of these people. Some were your friends. You even saw a few of your cousins \n\
+in the pile of bodies. ")
+                
+                continue_pillaging = input("After the realization you have come to a crossroads: \n\
+1. Continue pillaging your own people \n\
+2. Try to escape \n\
+What is your choice? (1/2): ")
+                
+                if continue_pillaging == 1:
+                    print("You are seen as a legend in your legion. You go on many more \n\
+battles and pillages until you are finally killed. \n\
+The end.")
+                    time.sleep(3)
+                
+                elif continue_pillaging == 2:
+                    print("You try to escape but you are captured and executed. You died \n\
+hated and despised by everyone. \n\
+The end.")
+                else:
+                    print("Please enter a valid answer")
+            
+            elif wins == 0:
+                print("You are seen as a traitor for many years after your death. \n\
+You lived dishonorably and died dishonorably. \n\
+The end.")
+            
+        elif continue_fighting == 'n':
+            print("The damage has been done. Your people despise you. \n\
+You try to escape the legion but are captured and executed. You died hated \n\
+by everyone. \n\
+The end.")
+        
+        else:
+            print("Please enter a valid answer")
         
     #Good ending 
     #Opens the fight with barbarians branch of the legionnaire story line 
@@ -375,27 +426,64 @@ You must fight them")
         if wins == 1:
             print("You win the battle and run away with your fellow barbarians. \n\
 You reach a place far enough from the legion. You give them all the details on \n\
-how you were treated, how the army operated and much more.\n\
+how you were treated, how the army operated and much more. However, Your men\n\
+are dying to hear what the next move is. In a great speech you decide to \n\
+counterattack. You sneak into position in the night while the legion. \n\
+You give your men the signal and you rush into battle. \n\
 ")          
-            #Makes you decide if you want to counter attack or run away in fear
-            fight_or_run = int(input("You must make a decision \n\
-1. We must counter-attack we can not let this stand \n\
-2. We must run away they are too advanced \n\
-Choose an option: "))
-            
-            #If you choose the counter attack option 
-            if fight_or_run == 1:
-                print("You decide you must counter-attack the legion. \n\
-You must regain your honor after being captured and subjugated to suffering \n\
-and grunt work. \n\
-")      
-        #Ending after losing to first legionnaire
-        elif wins == 1:
-            print("You die an honorable death beside your men. \n\
-You may not have made it home but at least you died in battle beside \n\
-your brothers in arms. \n\
-The end.")
             time.sleep(5)
+            wins = battle_game(75)
+            
+            if wins == 1:
+                print("You are seen as a hero and celebrated. You are \n\
+taken back to your village.")
+                
+                rule_or_not = input("You are seen as a living legend. \n\
+someone fit to rule. Your people ask you if you want to rule \n\
+Do you take them up on their offer? (y/n)?: ")
+                rule_or_not = rule_or_not.lower()
+                
+                if rule_or_not == 'y':
+                    wage_war = input("As a ruler of the barbarians \n\
+you understand the biggest issue that the barbarians are dealing with. \n\
+The romans. Do you wage war upon them? (y/n)?: ")
+                    wage_war = wage_war.lower()
+                    
+                    if wage_war == 'y':
+                        print("Your people and soldiers ready themselves \n\
+You and your soldiers head out. It is time to end this once and for all. \n\
+")
+                        time.sleep(3)
+                        wins = battle_game(60)
+                        
+                        if wins == 1:
+                            print("you are seen as a great warrior ruler \n\
+who with the the help of your soldiers solved the biggest problem \n\
+plagueing the barbarians. \n\
+The end.")
+                            
+                        elif wins == 0:
+                            print("You die honorably among your soldiers.\n\
+You are seen as a great hero who tried their best to defeat the Romans.\n\
+However, your death starts the ultimate collapse of the barbarians. \n\
+Your empire slowly starts to unravel without you to manage it. \n\
+The end.")
+                        
+                    elif wage_war == 'n':
+                        print("Your people understand your viewpoint. \n\
+You become a great ruler who is known for bringing peace to the land \n\
+and bolstering the economy.")
+                
+                elif rule_or_not == 'n':
+                    print("Your people are slightly disappointed but understand \n\
+the responsiblity of ruling is more than some can handle. The celebration \n\
+continues and you are seen as a hero for the rest of your life. \n\
+The end.")
+                    time.sleep(4.5)
+            
+            elif wins == 0:
+                print("You die an honorable death beside your men. \n\
+You may have died but your memory will never die.")
             
         else:
             print("Please enter a valid answer")
