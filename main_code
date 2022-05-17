@@ -771,6 +771,7 @@ The end.")
     else:
         print("Please enter a valid answer")
         
+#Prisoner story line
 elif life_path == 3:
     print("You become a slave to the Roman Legion. You must escape. \n\
 No matter what you must escape. \n\
@@ -943,7 +944,71 @@ taken the horse. \n\
 The end.")
             
 elif life_path == 4:
-    print("You become a prisoner of war and you must escape no matter the cost")
+    print("You become a prisoner of war and are taken to a Roman prison just outside \n\
+of town.")
+    contact_or_sneak = int(input("1. Do you want to contact your barbarian brethren \n\
+2. Do you want to sneak out "))
     
+    if contact_or_sneak == 1:
+        print("You manage to contact your fellow barbarians about the location of \n\
+your prison. You order an attack. A few days pass by and your brothers and sisters \n\
+arrive full force. You hear the screams of the battle. You are given a weapon and told \n\
+to fight. \n\
+")
+        time.sleep(5)
+        wins = battle_game(50)
+        
+        if wins == 1: 
+            print("You must fight the prison warden in order to escape. \n\
+")
+            time.sleep(1.5)
+            wins = battle_game(75)
+            
+            if wins == 1:
+                print("You did it. You escaped. You fought with your fellow \n\
+soldiers and escaped. It is over. You made it. \n\
+The end.")
+                time.sleep(5)
+                
+            elif wins == 0:
+                print("You die beside your soldiers. You may have died but \n\
+the attack you ordered was a major blow against the Romans. You may have died \n\
+but this attack has ensured your nation lives on. \n\
+The end.")
+                time.sleep(5)
+        
+        elif wins == 0:
+            print("You die beside your soldiers. This is it, this is the end \n\
+The end.")
+            time.sleep(5)
+    
+    elif contact_or_sneak == 2:
+        print("You try and sneak out of your prison with fellow inmates \n\
+You pick the lock and try to escape. You encounter a soldier \n\
+You must kill him as fast as possible. and as discreetly as possible. \n\
+")
+        time.sleep(5)
+        wins = battle_game(50)
+        
+        if wins == 1:
+            print("You sneak further down the halls. Closer to freedom \n\
+You find another guard. \n\
+")
+            time.sleep(4)
+            wins = battle_game(50)
+            
+            if wins == 1:
+                print("You escape to freedom into the night and no one knows. \n\
+You make the journey home. \n\
+The end.")
+            elif wins == 0:
+                print("You die unable to reach freedom. Your story is over. \n\
+The end.")
+                time.sleep(4)
+        
+        elif wins == 0:
+            print("You die unable to reach freedom. Your story is over.")
+            time.sleep(4)
+            
 else:
     print("Please enter a valid answer")
