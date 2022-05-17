@@ -4,6 +4,8 @@ import os
 
 #This is the mini-game that will be played
 def battle_game(health):
+    
+    #Image that shows up when the player light attacks
     def player_light_attack_image():
         print("\n\
  0                     0 \n\
@@ -12,7 +14,8 @@ def battle_game(health):
 / \\                   / \\ \n\
 You        -10        Enemy \n\
     ")
-        
+    
+    #Image that shows up when the player heavy attacks
     def player_heavy_attack_image():
         print("\n\
  0  ---------------->  0 \n\
@@ -21,7 +24,8 @@ You        -10        Enemy \n\
 / \\                   / \\ \n\
 You        -20        Enemy \n\
     ")
-        
+       
+    #Image that shows up when the enemy light attacks 
     def enemy_light_attack_image():
         print("\n\
  0                     0 \n\
@@ -30,7 +34,8 @@ You        -20        Enemy \n\
 / \\                   / \\ \n\
 Enemy      -15        You \n\
     ")
-        
+    
+    #Image that shows up when the enemy heavy attacks 
     def enemy_heavy_attack_image():
         print("\n\
  0  ---------------->  0 \n\
@@ -39,7 +44,8 @@ Enemy      -15        You \n\
 / \\                   / \\ \n\
 Enemy        -30      You \n\
     ")
-        
+    
+    #Image that shows up when the player's light attack misses
     def player_heavy_attack_miss_image():
         print("\n\
  0  ---------------->  0 \n\
@@ -48,7 +54,7 @@ Enemy        -30      You \n\
 / \\                   / \\ \n\
 You    Missed!        Enemy \n\
     ")
-        
+    #Image that shows up when the enemy's light attack misses
     def enemy_heavy_attack_miss_image():
         print("\n\
  0  ---------------->  0 \n\
@@ -247,7 +253,6 @@ Choose your option: "))
     
                 
             elif player_attack_choice == 2:
-                #percentage_chance = float(0.333)
                 
                 if random.random() > 0.333:
                     player_heavy_attack_image()
@@ -771,8 +776,9 @@ The end.")
     else:
         print("Please enter a valid answer")
         
-#Prisoner story line
+#Slave story line
 elif life_path == 3:
+    #exposition to the slave story line 
     print("You become a slave to the Roman Legion. You must escape. \n\
 No matter what you must escape. \n\
 ")
@@ -780,52 +786,62 @@ No matter what you must escape. \n\
     print("Fast forward to 3 weeks after you were captured. The night is pitch black. \n\
 If there was ever a time to escape it would be now. \n\
 ")
+    #Gives you the choice to either jump into the wagon and escape or not
     escape_or_not = int(input("1. Do you hop into a wagon and escape into the night \n\
 2. Do you wait for a more safe way to escape? \n\
 What is your choice? (1/2): "))
     
+    #Starts the branch that occurs when you choose to jump into the wagon
     if escape_or_not == 1:
         print("You hop into the wagon and escape into the night and the legionnaires \n\
 are none the wiser. It's been an exhausting few weeks and you finally have time to sleep. \n\
 You fall asleep and wake up a few hours later in a new town.")
         
+        #Gives you the choice to either steal the clothes or not 
         steal_clothes = input("You still look like a slave and you can get caught looking like that. \n\
 Do you steal clothes from a nearby shop? (y/n)?: ")
         steal_clothes = steal_clothes.lower()
         
+        #If you decide to steal the clothes you are brought to prison
         if steal_clothes == 'y':
             print("You are caught stealing clothes and are sent to prison. \n\
 It is worse than slavery. Manual labour, limited food and water, filth. There is no \n\
 way to escape other than brute force.")
             
+            #Do you decide to start a riot in the prison in an attempt to escape
             riot_or_not = input("Do you start a riot to try and escape? (y/n): ")
             riot_or_not = riot_or_not.lower()
             
+            #If you decide to start the riot
             if riot_or_not == 'y':
                 print("You convince your fellow inmates to revolt as well. \n\
 You lead the charge against the prison guards with improvised weapons. \n\
 You find yourself in front of a prison guard who is hell bent in keeping \n\
 you in prison. \n\
 ")
+                #fight against the first prison guard
                 time.sleep(3)
                 wins = battle_game(50)
                 
+                #If you defeat the fight against the first prison guard you move forward to the second fight
                 if wins == 1:
                     print("You continue the charge to the front gates. \n\
 It is just like when you fought side by side with your men against the \n\
 Legion. You are almost there when you find yourself right in front \n\
 of the last prison guard. He will not give up. \n\
 ")
-                    
+                    #fight against the second prison guard
                     time.sleep(4)
                     wins = battle_game(75)
                     
+                    #If you win the second fight against the prison guard you are able to successfully escape 
                     if wins == 1:
                         print("You escape and you are able to make it to your family. \n\
 It has been an grueling few weeks. But you have made it. Peace and Satisfaction at last. \n\
 The end.")
                         time.sleep(4)
                         
+                    #If you lose against the second prison guard
                     elif wins == 0:
                         print("You are unable to make it to the freedom you desired. \n\
 You are detained and locked back up. However, your leadership has allowed many of \n\
@@ -833,35 +849,52 @@ your fellow convicts to escape to \n\freedom where they can live new lives or \n
 dwell on the past. \n\
 The end.")
                         time.sleep(4)
+                        
+                    else:
+                        print("Please enter a valid answer")
                 
+                #If you lose against the first prison guard the other inmates are able to escape
                 elif wins == 0:
                     print("You die in the prison but the other inmates could escape. \n\
 You may have died but you made sure countless inmates didn't face the same fate you did. \n\
 The end.")
                     time.sleep(4)
+                
+                else:
+                    print("Please enter a valid answer")
             
+            #If you decide to not start a riot and be a good prisoner you lose and are unable to escape
             elif riot_or_not == 'n':
                 print("You couldn't escape and consequently were sold back into slavery. \n\
 You are never going to be able to be free ever again. \n\
 The end.")
                 time.sleep(4)
+            
+            else:
+                print("Please enter a valid answer")
         
+        #If you decide you do not want to steal the clothes
+        #Starts the second main branch of the slave story line 
         elif steal_clothes == 'n':
             print("Instead of stealing clothes you try to blend in without committing a crime. \n\
 ")
+            #Gives you the choice to either hide in a pub or become a begger 
             time.sleep(2)
             hide = int(input("1. Do you hide in a pub in a nearby slum \n\
 2. Do you hide in plain sights and try and be a begger until you have enough supplies to leave. \n\
 What is your choice?: "))
             
+            #If you decide to go to the pub you meet a suspicious looking man who lets you fight for supplies you need to escape
             if hide == 1:
                 print("You meet a suspicious man looking man who offers you enough food and water \n\
 to make it back home but only if you fight a fighter in a organized brawl not too far from the pub. \n\
 Since you have no choice you oblige.\n\
 ")
+                #Fight against the first brawler
                 time.sleep(4)
                 wins = battle_game(75)
                 
+                #If you win the fight against the first brawler you are allowed to escape
                 if wins == 1:
                     print("The man sticks to his word and gives you enough food and water to make it across. \n\
 You walk for what you believe is days. But you eventually make it across to your land. \n\
@@ -869,12 +902,16 @@ It's over all of it is over. You made it home. \n\
 The end.")
                     time.sleep(5)
                 
+                #If you lose the fight against the first brawler you are allowed to rematch a different brawler with less health
                 elif wins == 0:
                     print("The man is a good sport about it and decides to give you another chance. \n\
 ")
+                    #This is the fight against the second brawler 
                     time.sleep(3)
                     wins = battle_game(50)
                     
+                    #If you win the fight against the second brawler you are allowed to leave and go home 
+                    #The game ends after this 
                     if wins == 1:
                         print("The man sticks to his word and gives you enough food and water to make it across. \n\
 You walk for what you believe is days. But you eventually make it across to your land. \n\
@@ -882,18 +919,31 @@ It's over all of it is over. You made it home. \n\
 The end.")
                         time.sleep(5)
                     
+                    #If you lose the fight against the second brawler you become a begger and can not return home safely
                     elif wins == 0:
                         print("The man is dissapointed and doesn't want to waste another minute on you. \n\
 He tells you to get lost and you get nothing. Your only choice is to become a begger on the side of the road. \n\
 You grow more impatient by the day until you finally get fed up and start the journey. You almost make it but can't \n\
 Since you didn't bring enough food and water. You die on the way there. \n\
 The end.")
-            elif hide == 0:
+                    else:
+                        print("Please enter a valid answer")
+                else:
+                    print("Please enter a valid answer")
+            
+            #If you decide to become a begger and try to get money and buy supplies
+            #Ends the game 
+            elif hide == 2:
                 print("You stay there for about a month which is enough to get enough supplies to make the long journey \n\
 You make it but just barely. But in the end you made it. It doesn't matter what you had to do you are finally home. \n\
 The end. ")
                 time.sleep(5)
                 
+            else:
+                print("Please enter a valid answer")
+    
+    #You decide to wait until a better opportunity to attempt to escape
+    #Starts a major branch in the slave story line   
     elif escape_or_not == 2:
         print("You decide you would rather wait until Saturnalia a big holiday in Roman culture. You will make your \n\
 escape then when the soldiers are preoccupied. \n\
@@ -902,113 +952,165 @@ escape then when the soldiers are preoccupied. \n\
         print("Fast forward 2 weeks. You have waited patiently for 2 weeks this is the night you will escape. \n\
 ")
         time.sleep(2)
+        #Gives you the choice the night of Saturnalia to either escape into the night without anything or create a diversion
         sneak_or_diversion = int(input("1. Do you sneak into the night \n\
 2. Create a diversion and run away in the chaos \n\
 What is your choice? (1/2)?: "))
         
+        #If you attempt to sneak out without any diversion you are chased down but not captured
         if sneak_or_diversion == 1:
             print("While you attempt to sneak off the guards notice you trying to leave. \n\
 You make a run for it for about 2-3 hours narrowly dodging their horses and lanterns. \n\
-")
+")          
+            #Gives you the choice to either return to the prison and survive or take a chance and try and make it to town 
             return_or_not = input("You are exhausted from the chase you are not sure \n\
 If you can make it. Do you: \n\
 1. Go to the next town over \n\
 2. Return back \n\
 What is your choice? (1/2): ")
         
+            #If you decide to take the chance and make it to the town you spend a few days begging there and end up getting just enough to return home
             if return_or_not == 1:
                 print("You arrive to the next town and exhausted. You decide you must spend \n\
 a few days begging for money to buy enough food to make the journey to your lands You finish\n\
 getting enough food and are able to return to your lands. \n\
 The end.")
             
+            #You decide to turn yourself in and you are not allowed to leave ever again
             elif return_or_not == 2:
                 print("You are recaptured and never allowed to leave. \n\
 You die in captivity. \n\
 The end.")
+            else:
+                print("Please enter a valid answer")
         
+        #If you decide to make a diversion instead of sneaking without anything    
         elif sneak_or_diversion == 2:
             print("You start a large fire with a pile of boxes and a torch \n\
 you found. While the soldiers were preoccupied you make your escape into the night. \n\
 ")
+            #Gives you the choice to either steal the horse or not
             horse = input("Do you steal a horse from the soldiers? (y/n): ")
             horse = horse.lower()
             
+            #If you decide to take the house you make it home 
             if horse == 'y':
                 print("You ride your horse out to your land. You make it with barely \n\
 any supplies. Who knows what could've happened if you didn't bring the horse. \n\
 The end.")
+            #If you decide not to take the horse you can't make it that far and are unable to make it home
             elif horse == 'n':
                 print("You die of exhaustion and dehydration on the way. You should've \n\
 taken the horse. \n\
 The end.")
             
+            else:
+                print("Please enter a valid answer")
+                
+        else:
+            print("Please enter a valid answer")
+    
+    else:
+        print("Please enter a valid answer")
+        
+#The prisoner story line        
 elif life_path == 4:
     print("You become a prisoner of war and are taken to a Roman prison just outside \n\
 of town.")
-    contact_or_sneak = int(input("1. Do you want to contact your barbarian brethren \n\
+    
+    #Gives you the choice to decide how you want to escape the prison
+    contact_or_sneak = int(input("1. Do you want to contact the barbarians \n\
 2. Do you want to sneak out "))
     
+    #If you choose to contact your fellow barbarians or sneak out on your own 
     if contact_or_sneak == 1:
         print("You manage to contact your fellow barbarians about the location of \n\
 your prison. You order an attack. A few days pass by and your brothers and sisters \n\
 arrive full force. You hear the screams of the battle. You are given a weapon and told \n\
 to fight. \n\
 ")
+        #You fight the first prison guard
         time.sleep(5)
         wins = battle_game(50)
         
+        #If you win the fight against the first prison guard 
+        #You must fight the prison warden to escape
         if wins == 1: 
             print("You must fight the prison warden in order to escape. \n\
 ")
+            #Fight against the prison warden 
             time.sleep(1.5)
             wins = battle_game(75)
             
+            #If you beat the prison warden you escape the prison and regroup with the barbarians
             if wins == 1:
                 print("You did it. You escaped. You fought with your fellow \n\
 soldiers and escaped. It is over. You made it. \n\
 The end.")
                 time.sleep(5)
-                
+            
+            #If you die against the prison warden  
             elif wins == 0:
                 print("You die beside your soldiers. You may have died but \n\
 the attack you ordered was a major blow against the Romans. You may have died \n\
 but this attack has ensured your nation lives on. \n\
 The end.")
                 time.sleep(5)
+                
+            else:
+                print("Please enter a valid answer")    
         
+        #If you die against the first prison guard you die and are unable to go home
+        #You accomplished nothing
         elif wins == 0:
             print("You die beside your soldiers. This is it, this is the end \n\
 The end.")
             time.sleep(5)
+
+        else:
+            print("Please enter a valid answer")
     
+    #If you try and sneak out the prison with other inmates
     elif contact_or_sneak == 2:
         print("You try and sneak out of your prison with fellow inmates \n\
 You pick the lock and try to escape. You encounter a soldier \n\
 You must kill him as fast as possible. and as discreetly as possible. \n\
 ")
+        #fight against the first prison guard
         time.sleep(5)
         wins = battle_game(50)
         
+        #If you win against the first prison guard
         if wins == 1:
             print("You sneak further down the halls. Closer to freedom \n\
 You find another guard. \n\
 ")
+            #Fight against the second prison guard
             time.sleep(4)
             wins = battle_game(50)
             
+            #If you win against the second prison guard safely
             if wins == 1:
                 print("You escape to freedom into the night and no one knows. \n\
 You make the journey home. \n\
 The end.")
+            #If you die against the second prison guard
             elif wins == 0:
                 print("You die unable to reach freedom. Your story is over. \n\
 The end.")
                 time.sleep(4)
+                
+            else:
+                print("Please enter a valid answer")
         
+        #If you lose against the first prison guard you can never make it home because you are dead
         elif wins == 0:
             print("You die unable to reach freedom. Your story is over.")
             time.sleep(4)
             
+        else:
+            print("Please enter a valid answer")       
+    else:
+        print("Please enter a valid answer")
 else:
     print("Please enter a valid answer")
